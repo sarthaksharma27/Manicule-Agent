@@ -33,8 +33,9 @@ export default function Home() {
         body: formData,
       });
 
-      const data = await response.json();
-      console.log("Upload response:", data);
+      const text = await response.text();
+      console.log("Upload response:", text);
+      alert(text);
       alert("File uploaded. Agent started.");
     } catch (err) {
       console.error("Upload error:", err);
