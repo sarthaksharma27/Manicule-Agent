@@ -9,8 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/health/1", healthRouter);
-app.use("/health/1", healthRouter);
+app.use("/health", healthRouter);
 app.use("/upload", uploadRouter);
 
 const PORT = 4000;
