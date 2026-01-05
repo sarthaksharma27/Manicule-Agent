@@ -3,7 +3,7 @@ import { upload } from "../middleware/upload.js";
 
 const router = Router();
 
-router.post("/", upload.single("file"), (req, res) => {
+router.post("/v1", upload.single("file"), (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded");
   }
