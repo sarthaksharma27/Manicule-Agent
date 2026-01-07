@@ -1,0 +1,57 @@
+<Warning>This endpoint is deprecated. Use `/upload/v2` instead.</Warning>
+
+# File Upload API
+
+## Overview
+
+The File Upload API allows clients to upload files to the server. This document outlines the usage of the `/upload/v2` endpoint, which supersedes the previous `/upload` endpoint.
+
+## Endpoint
+
+### POST `/upload/v2`
+
+This endpoint accepts a single file upload. The file must be sent as a form-data request with the key `file`.
+
+### Request
+
+- **Method**: `POST`
+- **URL**: `/upload/v2`
+- **Headers**:
+  - `Content-Type: multipart/form-data`
+
+#### Parameters
+
+<ParamField name="file" type="file" required={true}>
+The file to be uploaded. Must be included in the form-data with the key `file`.
+</ParamField>
+
+### Response
+
+- **Status Code**: `200 OK` if the file is successfully received.
+- **Status Code**: `400 Bad Request` if no file is uploaded.
+
+#### JSON Response Example
+
+```json
+{
+  "message": "File received"
+}
+```
+
+### Error Handling
+
+- If no file is uploaded, the server will respond with a `400 Bad Request` status and the message "No file uploaded".
+
+## Usage Example
+
+To upload a file, send a `POST` request to `/upload/v2` with the file included in the form-data. Below is an example using `curl`:
+
+```bash
+curl -X POST http://yourserver.com/upload/v2 \
+  -F "file=@/path/to/yourfile.txt"
+```
+
+## Notes
+
+- Ensure that the file size and type are within the server's accepted limits.
+- The server logs the original name of the received file for reference.
