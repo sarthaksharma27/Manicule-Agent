@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/health", healthRouter);
-app.use("/upload/v2", uploadRouter);
+app.use("/upload", uploadRouter);
 
 const PORT = 4000;
 
