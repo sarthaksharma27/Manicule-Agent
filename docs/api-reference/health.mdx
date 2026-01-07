@@ -1,0 +1,95 @@
+---
+title: "File Upload API"
+description: "Documentation for the file upload API endpoint."
+icon: "upload"
+---
+
+# File Upload API
+
+This document provides details on the file upload API, including usage, parameters, and responses.
+
+## Endpoint
+
+### POST `/upload/v2`
+
+<Warning>
+This endpoint has been updated from `/upload` to `/upload/v2`.
+</Warning>
+
+The `/upload/v2` endpoint allows clients to upload a single file to the server.
+
+## Request
+
+### Headers
+
+- `Content-Type: multipart/form-data`
+
+### Parameters
+
+<ParamField path="file" type="file" required>
+The file to be uploaded. This should be included in the form data.
+</ParamField>
+
+## Responses
+
+### 200 OK
+
+<ResponseField name="message" type="string">
+Confirmation that the file was received successfully.
+</ResponseField>
+
+```json
+{
+  "message": "File received"
+}
+```
+
+### 400 Bad Request
+
+<ResponseField name="error" type="string">
+Error message indicating that no file was uploaded.
+</ResponseField>
+
+```json
+{
+  "error": "No file uploaded"
+}
+```
+
+## Example Usage
+
+### cURL
+
+```bash
+curl -X POST http://localhost:4000/upload/v2 \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@/path/to/your/file.txt"
+```
+
+### Node.js
+
+```typescript
+import axios from 'axios';
+import FormData from 'form-data';
+import fs from 'fs';
+
+const form = new FormData();
+form.append('file', fs.createReadStream('/path/to/your/file.txt'));
+
+axios.post('http://localhost:4000/upload/v2', form, {
+  headers: {
+    ...form.getHeaders(),
+  },
+})
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error(error.response.data);
+});
+```
+
+## Notes
+
+- Ensure that the file is included in the form data with the key `file`.
+- The server logs the original name of the uploaded file for reference.
