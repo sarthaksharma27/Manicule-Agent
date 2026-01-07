@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use("/health", healthRouter);
 app.use("/upload", uploadRouter);
+app.use("/media", mediaRoute);
 
 const PORT = 4000;
 
