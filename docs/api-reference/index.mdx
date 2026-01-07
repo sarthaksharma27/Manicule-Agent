@@ -1,0 +1,65 @@
+<Warning>This endpoint is deprecated. Use `/health/v2` instead.</Warning>
+
+# Health Check API
+
+## Overview
+
+The Health Check API provides endpoints to verify the status of the application. It is essential for monitoring the application's health and ensuring that all services are operational.
+
+## Endpoints
+
+### GET `/health/v2`
+
+This endpoint returns the current status of the application. It is the recommended endpoint for health checks.
+
+#### Request
+
+- **Method**: GET
+- **Path**: `/health/v2`
+
+#### Response
+
+- **Status Code**: 200 OK
+- **Content-Type**: application/json
+
+#### JSON Response Example
+
+```json
+{
+  "status": "healthy",
+  "uptime": 123456,
+  "timestamp": "2023-10-01T12:00:00Z"
+}
+```
+
+### Deprecated Endpoint
+
+<Warning>This endpoint is deprecated. Use `/health/v2` instead.</Warning>
+
+#### GET `/health`
+
+This endpoint was previously used to check the application's health but has been replaced by `/health/v2`.
+
+#### Request
+
+- **Method**: GET
+- **Path**: `/health`
+
+#### Response
+
+- **Status Code**: 200 OK
+- **Content-Type**: application/json
+
+#### JSON Response Example
+
+```json
+{
+  "status": "healthy",
+  "uptime": 123456,
+  "timestamp": "2023-10-01T12:00:00Z"
+}
+```
+
+## Usage
+
+To perform a health check, send a GET request to the `/health/v2` endpoint. The response will include the application's status, uptime, and the current timestamp. This information can be used to monitor the application's health and ensure it is running smoothly.
