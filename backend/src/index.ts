@@ -10,7 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/health", healthRouter);
+/**
+ * @deprecated Use /media instead. This route will be removed in v2.0
+ */
 app.use("/upload", uploadRouter);
+
 
 const PORT = 4000;
 
