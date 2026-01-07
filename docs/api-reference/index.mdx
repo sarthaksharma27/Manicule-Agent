@@ -1,0 +1,94 @@
+---
+title: "File Upload API v2"
+description: "Documentation for the updated file upload API endpoint."
+icon: "upload"
+---
+
+# File Upload API v2
+
+This document provides details on the updated file upload API endpoint `/upload/v2`. This endpoint allows clients to upload files to the server.
+
+<Warning>
+The previous endpoint `/upload` has been deprecated and replaced with `/upload/v2`.
+</Warning>
+
+## Endpoint
+
+- **URL**: `/upload/v2`
+- **Method**: `POST`
+- **Content-Type**: `multipart/form-data`
+
+## Request
+
+### Parameters
+
+<ParamField path="file" type="file" required>
+The file to be uploaded. Must be included in the form-data.
+</ParamField>
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:4000/upload/v2 \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@/path/to/your/file.txt"
+```
+
+## Response
+
+### Success
+
+<ResponseField name="200 OK" type="string">
+Indicates that the file was successfully received by the server.
+</ResponseField>
+
+```json
+{
+  "message": "File received"
+}
+```
+
+### Error
+
+<ResponseField name="400 Bad Request" type="string">
+Returned if no file is uploaded in the request.
+</ResponseField>
+
+```json
+{
+  "error": "No file uploaded"
+}
+```
+
+## Internal Logic
+
+The server uses the `multer` middleware to handle file uploads. The uploaded file is accessible via `req.file` in the request handler.
+
+```typescript
+import { Router } from "express";
+import { upload } from "../middleware/upload.js";
+
+const router = Router();
+
+router.post("/", upload.single("file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded");
+  }
+
+  console.log("Received file:", req.file.originalname);
+
+  res.send("File received");
+});
+
+export default router;
+```
+
+## Dependencies
+
+The following dependencies are used for handling file uploads:
+
+- **express**: ^5.2.1
+- **multer**: ^2.0.2
+- **@types/multer**: ^2.0.0 (for TypeScript type definitions)
+
+Ensure these dependencies are installed and up-to-date in your project to use the file upload functionality effectively.
