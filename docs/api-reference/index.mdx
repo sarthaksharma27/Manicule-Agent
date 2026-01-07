@@ -1,0 +1,44 @@
+<Title>API Documentation for Health Check Endpoint</Title>
+
+<Introduction>
+This document provides detailed information about the health check endpoint available in the Manicule Agent backend service. The health check endpoint is used to verify the operational status of the service.
+</Introduction>
+
+<Warning>
+The `/health` endpoint is deprecated. Use `/health/v2` instead.
+</Warning>
+
+<Section title="Health Check Endpoint v2">
+  <Description>
+  The `/health/v2` endpoint provides a mechanism to check the health status of the service. It returns a JSON response indicating the current operational status.
+  </Description>
+
+  <Endpoint>
+    <Method>GET</Method>
+    <Path>/health/v2</Path>
+  </Endpoint>
+
+  <Response>
+    <StatusCode>200</StatusCode>
+    <ContentType>application/json</ContentType>
+    <Example>
+      {
+        "status": "healthy",
+        "uptime": "123456",
+        "version": "1.0.0"
+      }
+    </Example>
+  </Response>
+</Section>
+
+<Section title="Usage">
+  <Description>
+  To use the health check endpoint, send a GET request to `/health/v2`. The response will include the current status, uptime, and version of the service.
+  </Description>
+</Section>
+
+<Section title="Deprecation Notice">
+  <Description>
+  The previous `/health` endpoint has been deprecated and replaced by `/health/v2`. Ensure that all integrations are updated to use the new endpoint to maintain compatibility with future updates.
+  </Description>
+</Section>
