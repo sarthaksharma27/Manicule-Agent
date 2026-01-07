@@ -1,0 +1,89 @@
+---
+title: "Backend API Documentation"
+description: "Documentation for the Manicule Agent backend API."
+icon: "api"
+---
+
+# Manicule Agent API
+
+This document provides an overview of the API routes available in the Manicule Agent backend. The backend is built using Node.js and Express, with TypeScript for type safety.
+
+## Getting Started
+
+To start the backend server, use the following command:
+
+```bash
+npm run dev
+```
+
+This will start the server on the default port 4000.
+
+## API Routes
+
+### Health Check
+
+The health check endpoint is used to verify that the server is running.
+
+- **URL**: `/health`
+- **Method**: `GET`
+- **Response**: `200 OK`
+
+### File Upload
+
+The upload endpoint allows users to upload files to the server.
+
+- **URL**: `/upload`
+- **Method**: `POST`
+- **Response**: `201 Created`
+
+### Media
+
+The media endpoint has been added to handle media-related requests.
+
+- **URL**: `/media`
+- **Method**: `GET`
+- **Response**: `200 OK`
+
+<ParamField path="/media" type="GET">Retrieve media resources</ParamField>
+
+## Development Setup
+
+Ensure you have Node.js version 18.12 or higher installed. The project uses TypeScript, so you will need to install the necessary dependencies:
+
+```bash
+npm install
+```
+
+### Scripts
+
+- **`npm run dev`**: Starts the development server with `nodemon` and `ts-node`.
+- **`npm run build`**: Compiles TypeScript to JavaScript.
+- **`npm start`**: Runs the compiled JavaScript files.
+
+## Dependencies
+
+The project relies on several key dependencies:
+
+- **Express**: A minimal and flexible Node.js web application framework.
+- **Multer**: Middleware for handling `multipart/form-data`, used for file uploads.
+- **CORS**: Middleware to enable Cross-Origin Resource Sharing.
+
+## TypeScript Configuration
+
+The TypeScript configuration is set to target ES2017 and includes libraries for DOM and ESNext. The configuration ensures strict type checking and module resolution.
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "module": "esnext",
+    "jsx": "react-jsx"
+  }
+}
+```
+
+## License
+
+This project is licensed under the ISC License.
