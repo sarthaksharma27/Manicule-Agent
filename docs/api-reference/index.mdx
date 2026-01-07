@@ -1,0 +1,62 @@
+<Warning>This endpoint is deprecated. Use `/upload/v2` instead.</Warning>
+
+# API Documentation
+
+## Upload Endpoint
+
+### Overview
+
+The upload endpoint allows clients to upload files to the server. This section details the available routes and their usage.
+
+### Routes
+
+#### `/upload/v2`
+
+This is the new version of the upload endpoint. It replaces the deprecated `/upload` route.
+
+- **Method**: POST
+- **Path**: `/upload/v2`
+- **Description**: Uploads a file to the server.
+
+### Request
+
+- **Headers**:
+  - `Content-Type`: `multipart/form-data`
+
+- **Body Parameters**:
+  - <ParamField name="file" type="file" required={true} description="The file to be uploaded." />
+
+### Response
+
+- **Status Code**: 200 OK
+- **Response Body**:
+  ```json
+  {
+    "message": "File uploaded successfully",
+    "fileUrl": "https://example.com/uploads/yourfile.ext"
+  }
+  ```
+
+### Example
+
+#### Request
+
+```http
+POST /upload/v2 HTTP/1.1
+Host: api.example.com
+Content-Type: multipart/form-data
+```
+
+#### Response
+
+```json
+{
+  "message": "File uploaded successfully",
+  "fileUrl": "https://example.com/uploads/yourfile.ext"
+}
+```
+
+### Notes
+
+- Ensure that the file size does not exceed the server's maximum upload limit.
+- The `/upload` route is no longer supported. Transition to using `/upload/v2` for all file uploads.
