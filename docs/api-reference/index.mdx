@@ -1,0 +1,94 @@
+---
+title: "API Documentation"
+description: "Comprehensive guide for the Manicule Agent API"
+icon: "api"
+---
+
+# Manicule Agent API
+
+The Manicule Agent API provides endpoints for managing various operations within the backend service. This document outlines the available routes and their usage.
+
+## Endpoints
+
+### Health Check
+
+The `/health` endpoint is used to verify the service's operational status.
+
+```bash
+GET /health
+```
+
+<ResponseField name="status" type="string">
+Indicates the health status of the service.
+</ResponseField>
+
+### File Upload
+
+The `/upload` endpoint allows for file uploads to the server.
+
+```bash
+POST /upload
+```
+
+<ParamField path="file" type="file" default="none">
+The file to be uploaded.
+</ParamField>
+
+<ResponseField name="message" type="string">
+Confirmation message upon successful upload.
+</ResponseField>
+
+### Update
+
+The newly added `/update` endpoint is used to update existing resources.
+
+```bash
+POST /update
+```
+
+<ParamField path="resourceId" type="string" default="none">
+The ID of the resource to be updated.
+</ParamField>
+
+<ParamField path="data" type="object" default="none">
+The data to update the resource with.
+</ParamField>
+
+<ResponseField name="status" type="string">
+Indicates the success or failure of the update operation.
+</ResponseField>
+
+## Getting Started
+
+To start using the API, ensure your environment meets the following requirements:
+
+- Node.js version >= 18.12
+- TypeScript version >= 4.8.4
+
+Install dependencies using:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build the project:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm start
+```
+
+## License
+
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
