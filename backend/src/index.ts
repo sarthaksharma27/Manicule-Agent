@@ -15,5 +15,5 @@ app.use("/upload", uploadRouter);
 const PORT = 4000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`App running on port ${PORT}`);
 });
